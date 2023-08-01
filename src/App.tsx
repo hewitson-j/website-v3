@@ -1,6 +1,5 @@
 import './index.css'
 import Navbar from './components/Navbar'
-import MediaCard from './components/MediaCard'
 import { Container, Grid } from '@mui/material'
 import Routes from './components/Routes'
 
