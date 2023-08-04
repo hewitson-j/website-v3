@@ -1,6 +1,4 @@
 import './index.css'
-import Navbar from './components/Navbar'
-import { Container, Grid } from '@mui/material'
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 import Projects from './components/Projects';
 import ErrorPage from './components/ErrorPage';
