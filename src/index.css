@@ -2,6 +2,11 @@ body {
   margin: 0;
 }
 
+::selection {
+  color: white;
+  background-color: rgb(152, 37, 37);
+}
+
 .header {
   margin: 2rem 0;
 }
