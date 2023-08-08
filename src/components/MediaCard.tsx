@@ -5,26 +5,34 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-export default function MediaCard() {
+interface MediaCardProps {
+    id: number 
+    name?: string
+    description?: string
+    liveLink?: string
+    githubLink?: string
+    image?: string[]
+}
+
+export default function MediaCard({id= 0, name="Default", description="This is the default description", githubLink='https://github.com/hewitson-j', image=["https://static.thenounproject.com/png/2775987-200.png", 'No Image']} : MediaCardProps) {
   return (
     <Card>
       <CardMedia
         sx={{ height: 140 }}
-        image="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?cs=srgb&dl=pexels-binyamin-mellish-106399.jpg&fm=jpg"
-        title="green iguana"
+        image={image[0]}
+        title={image[1]}
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          {name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          {description}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Button size="small">See more</Button>
+        <Button size="small" href={githubLink}>Repository</Button>
       </CardActions>
     </Card>
   );
