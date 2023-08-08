@@ -1,5 +1,6 @@
 import { Typography } from "@mui/material";
 import { Link, useParams } from "react-router-dom";
+import projects from "../projects";
 
 export const project = {
   id: 0,
@@ -33,27 +34,40 @@ interface ProjectDetailsProps {
   packages: Package[];
 }
 
+function getProject(id: string) {
+  return projects.find((project) => {
+    return project.id === id;
+  });
+}
+
 export default function ProjectDetails(props: ProjectDetailsProps) {
   const { id } = useParams();
+
+  const project = getProject(id!);
 
   return (
     <>
       <Typography gutterBottom variant="h5" component="div">
-        {project.name}
+        {project?.name}
       </Typography>
-      <Typography>{project.description}</Typography>
-      <Typography>{project.problem}</Typography>
+      <Typography>{project?.description}</Typography>
+      <Typography>{project?.problem}</Typography>
       <Typography gutterBottom>
         The Github repository is available at{" "}
-        <a href={project.githubLink}>here</a>.
+        <a href={project?.githubLink}>here</a>.
       </Typography>
       <Typography gutterBottom>
-        The project is live <a href={project.liveLink}>here</a>.
+        The project is live <a href={project?.liveLink}>here</a>.
       </Typography>
       {/* <Typography>{props.packages}</Typography> */}
+
       <Typography variant="body2" component="div">
         <Link to="/">Back</Link>
       </Typography>
     </>
   );
+}
+
+{
+  /* TODO: Figure out how to go back one in the React router history stack */
 }

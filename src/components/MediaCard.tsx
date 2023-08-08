@@ -6,20 +6,22 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 interface MediaCardProps {
-  id: number;
+  id: string;
   name?: string;
   description?: string;
   liveLink?: string;
   githubLink?: string;
   image?: string[];
+  detailsUrl: string;
 }
 
 export default function MediaCard({
-  id = 0,
   name = "Default",
   description = "This is the default description",
   githubLink = "https://github.com/hewitson-j",
+  liveLink,
   image = ["https://static.thenounproject.com/png/2775987-200.png", "No Image"],
+  detailsUrl,
 }: MediaCardProps) {
   return (
     <Card>
@@ -33,10 +35,16 @@ export default function MediaCard({
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">See more</Button>
-        <Button size="small" href={githubLink}>
-          Repository
-        </Button>
+        {detailsUrl && (
+          <Button size="small" href={detailsUrl}>
+            See More
+          </Button>
+        )}
+        {githubLink ? (
+          <Button size="small" href={githubLink}>
+            Repository
+          </Button>
+        ) : null}
       </CardActions>
     </Card>
   );
